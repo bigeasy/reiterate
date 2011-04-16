@@ -4,11 +4,13 @@ Evented construction of JSON objects.
 
 ## Synopsis
 
-This is a universal database API, in the spirit of worse is better. Async Object
-creates a JSON object tree asynchronously, interpreting functions in the object
-heirarchy as data methods that accept a callback.
+Async Object creates a JSON object tree asynchronously, interpreting functions
+in the object heirarchy as data methods that accept a callback.
 
 You can use functions to define the functions that populate the structure.
+
+The data functions can inject more data functions into the heirarchy, so that
+the children can be created based on their parents.
 
 ```javascript
 var loadObject = require("async-object").loadObject,
