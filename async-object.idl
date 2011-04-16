@@ -12,7 +12,7 @@ You can use functions to define the functions that populate the structure.
 
 ```javascript
 var loadObject = require("async-object").loadObject,
-    datastore = require("acme-datastore").datastore
+    datastore = require("acme-datastore").datastore;
 
 function getArticleByPerson(personId) {
   function (callback) {
