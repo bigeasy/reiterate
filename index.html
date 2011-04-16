@@ -47,11 +47,13 @@
         
           <h2>Synopsis</h2>
 
-<p>This is a universal database API, in the spirit of worse is better. Async Object
-creates a JSON object tree asynchronously, interpreting functions in the object
-heirarchy as data methods that accept a callback.</p>
+<p>Async Object creates a JSON object tree asynchronously, interpreting functions
+in the object heirarchy as data methods that accept a callback.</p>
 
 <p>You can use functions to define the functions that populate the structure.</p>
+
+<p>The data functions can inject more data functions into the heirarchy, so that
+the children can be created based on their parents.</p>
         
           <div class="highlight"><pre><span class="kd">var</span> <span class="nx">loadObject</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;async-object&quot;</span><span class="p">).</span><span class="nx">loadObject</span><span class="p">,</span>
     <span class="nx">datastore</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;acme-datastore&quot;</span><span class="p">).</span><span class="nx">datastore</span><span class="p">;</span>
