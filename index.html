@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Async Object</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="site/idl.css">
+</head>
+<body>
+  
+  <a href="http://github.com/bigeasy/async-object"><img style="position: fixed; top: 0; right:
+  0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"
+  alt="Fork me on GitHub" /></a>
+  
+  <div id="container">
+    <div id="api">
+      <h1>Async Object</h1>
+      
+        
+      
+        
+          <h2 class="heading">Synopsis</h3>
+        
+      
+      
+    </div>
+    <div id="narrative">
+      
+        
+        
+        
+          <h1>Async Object</h1>
+
+<p>Evented construction of JSON objects.</p>
+        
+      
+        
+        
+        
+          <h2>Synopsis</h2>
+
+<p>This is a universal database API, in the spirit of worse is better. Async Object
+creates a JSON object tree asynchronously, interpreting functions in the object
+heirarchy as data methods that accept a callback.</p>
+
+<p>You can use functions to define the functions that populate the structure.</p>
+        
+          <div class="highlight"><pre><span class="kd">var</span> <span class="nx">loadObject</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;async-object&quot;</span><span class="p">).</span><span class="nx">loadObject</span><span class="p">,</span>
+    <span class="nx">datastore</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;acme-datastore&quot;</span><span class="p">).</span><span class="nx">datastore</span>
+
+<span class="kd">function</span> <span class="nx">getArticleByPerson</span><span class="p">(</span><span class="nx">personId</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">function</span> <span class="p">(</span><span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">datastore</span><span class="p">.</span><span class="nx">select</span><span class="p">(</span><span class="s2">&quot;articles&quot;</span><span class="p">,</span> <span class="s2">&quot;personId&quot;</span><span class="p">,</span> <span class="nx">personId</span><span class="p">,</span> <span class="nx">callback</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">getPerson</span> <span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">function</span> <span class="p">(</span><span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">datastore</span><span class="p">.</span><span class="nx">select</span><span class="p">(</span><span class="s2">&quot;people&quot;</span><span class="p">,</span> <span class="nx">id</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">people</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">callback</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+      <span class="p">}</span>  <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">person</span> <span class="o">=</span> <span class="nx">people</span><span class="p">.</span><span class="nx">shift</span><span class="p">();</span>
+        <span class="nx">person</span><span class="p">.</span><span class="nx">articles</span> <span class="o">=</span> <span class="nx">getArticleByPerson</span><span class="p">(</span><span class="nx">person</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+        <span class="nx">callback</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">person</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">person</span><span class="o">:</span> <span class="nx">getPeople</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">};</span>
+<span class="nx">loadObject</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">data</span><span class="p">.</span><span class="nx">person</span><span class="p">.</span><span class="nx">articles</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">article</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">person</span><span class="p">.</span><span class="nx">articles</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+    <span class="nx">process</span><span class="p">.</span><span class="nx">stdout</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">article</span><span class="p">.</span><span class="nx">title</span> <span class="o">+</span> <span class="s2">&quot; by &quot;</span> <span class="o">+</span> <span class="nx">person</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s2">&quot;\n&quot;</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+
+        
+          
+        
+      
+    </div>
+  </div>
+</body>
+</html>
