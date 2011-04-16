@@ -22,6 +22,14 @@
           <h2 class="heading">Synopsis</h3>
         
       
+        
+          <h3 class="namespace depth-0">async-object</h3>
+        
+      
+        
+          <h3 class="function depth-1">loadObject</h3>
+        
+      
       
     </div>
     <div id="narrative">
@@ -78,7 +86,72 @@ heirarchy as data methods that accept a callback.</p>
 </pre></div>
 
         
+          <p><br>
+For those of you using a NoSQL database, this is an easy way to get a
+pseudo-JOIN, to create a psuedo-JOIN across database engines</p>
+        
+      
+        
+          <h3 class="namespace">async-object</h3>
+        
+        
+        
+          <p>The <code>async-object</code> module exports the <code>loadObject</code> method.</p>
+        
+          <div class="highlight"><pre><span class="kd">var</span> <span class="nx">loadObject</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&quot;async-object&quot;</span><span class="p">).</span><span class="nx">loadObject</span><span class="p">;</span>
+</pre></div>
+
+        
           
+        
+      
+        
+          
+            <h3 class="function">async-object.loadObject(object, callback)</h3>
+          
+        
+        
+            
+                <div class="parameter">
+                  <h4>object</h4>
+                  
+                    <p>The object to populate.</p>
+                  
+                </div>
+            
+                <div class="parameter">
+                  <h4>callback</h4>
+                  
+                    <p>The callback to invoke when the object has been loaded, or when an error
+  occurs.</p>
+                  
+                </div>
+            
+        
+        
+          <p>Use the <code>loadObject</code> method to load the <code>object</code> and invoke the given <code>callback</code>
+when the object is loaded or if there is an error.</p>
+
+<p>Any valid JSON type can be passed to <code>loadObject</code>. If the type is not an object,
+array or function, the data is simply forwarded to the callback.</p>
+
+<p><code>loadObject</code> will descend the object contents recursively. Any values of type
+<code>function</code> found in an object or array are assumed to be methods that accept a
+single callback and invoked. The callback is of the form <code>callback(error,
+data)</code>.</p>
+
+<p>If data generation function invokes the callback is invoked with an error, the
+error is forwarded to the user callback passed to <code>loadObject</code> and loading ends.
+Otherwise, each value in th  data passed to the callback descended searching for
+functions.</p>
+
+<p>Note that each value of the data given to the is first checked for a function
+that needs to be expanded, invokes the function if it exists. This means that a
+one data function can return a data structure with data functions in it, and
+those data functions will be be expanded before they are assigned to the tree.</p>
+
+<p>You can also pass a function as the <code>object</code> argument so that the expanded data
+callback result is given to the user callback.</p>
         
       
     </div>
