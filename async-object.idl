@@ -1,0 +1,44 @@
+# Async Object
+
+Evented construction of JSON objects.
+
+## Synopsis
+
+This is a universal database API, in the spirit of worse is better. Async Object
+creates a JSON object tree asynchronously, interpreting functions in the object
+heirarchy as data methods that accept a callback.
+
+You can use functions to define the functions that populate the structure.
+
+```javascript
+var loadObject = require("async-object").loadObject,
+    datastore = require("acme-datastore").datastore
+
+function getArticleByPerson(personId) {
+  function (callback) {
+    datastore.select("articles", "personId", personId, callback);
+  }
+}
+
+function getPerson (id) {
+  function (callback) {
+    datastore.select("people", id, function (error, people) {
+      if (error) {
+        callback(error);
+      }  else {
+        person = people.shift();
+        person.articles = getArticleByPerson(person.id);
+        callback(null, person);
+      }
+    });
+  }
+}
+
+var data = { person: getPeople(1) };
+loadObject(data, function (error, data) {
+  for (var i = 0; i < data.person.articles.length; i++) {
+    article = data.person.articles[i];
+    process.stdout.write(article.title + " by " + person.name + "\n");
+  }
+});
+```
