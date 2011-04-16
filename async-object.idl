@@ -42,3 +42,11 @@ loadObject(data, function (error, data) {
   }
 });
 ```
+
+namespace: async-object
+
+The `async-object` module exports the `loadObject` method.
+
+```javascript
+var loadObject = require("tar").loadObject;
+```
