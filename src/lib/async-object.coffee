@@ -27,11 +27,11 @@ loadObject = (object, callback) ->
           else
             loadObject object[keys[index]], (error, data) ->
               if error
-                callback(null, error)
+                callback(error)
               else
                 loadObject data, (error, data) ->
                   if error
-                    callback(null, error)
+                    callback(error)
                   else
                     object[keys[index]] = data
                     next(object, keys, index + 1)
