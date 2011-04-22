@@ -1,0 +1,12 @@
+### Async Object 0.0.2 - Fri Apr 22 09:15:44 CDT 2011
+
+ * Fixed stack overflow by calling next tick at an artibrary interval of 1024
+   function calls, give or take.
+ 
+### Async Object 0.0.2 - Mon Apr 18 09:16:11 CDT 2011
+
+ * Fixed bug where callback was called with data as the error argument.
+
+### Async Object 0.0.1 - Sat Apr 16 09:16:50 CDT 2011
+
+ * Initial commit. See documentation.
