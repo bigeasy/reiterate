@@ -16,41 +16,43 @@ loadObject = (trace, object, depth, userCallback, callback) ->
     when "object"
       if not object?
         descend(trace, null, object, depth + 1, userCallback, callback)
-      else if Array.isArray(object)
-        next = (object, index, depth) ->
-          trace "arrayNext", depth, object is null, index, userCallback is callback
-          if index is object.length
-            descend(trace, null, object, depth + 1, userCallback, callback)
-          else
-            loadObject trace, object[index], depth + 1, userCallback, (error, data, depth) ->
-              if error
-                descend(trace, error, null, depth + 1, userCallback, callback)
-              else
-                loadObject trace, data, depth + 1, userCallback, (error, data, depth) ->
-                  if error
-                    descend(trace, error, null, depth + 1, userCallback, callback)
-                  else
-                    object[index] = data
-                    next(object, index + 1, depth + 1)
-        next(object, 0, depth + 1)
-      else
-        keys = Object.keys(object)
-        next = (object, keys, index, depth) ->
-          trace "objectNext", depth, object is null, keys[index], userCallback is callback
-          if index is keys.length
-            descend(trace, null, object, depth + 1, userCallback, callback)
-          else
-            loadObject trace, object[keys[index]], depth + 1, userCallback, (error, data, depth) ->
-              if error
-                descend(trace, error, null, depth + 1, userCallback, callback)
-              else
-                loadObject trace, data, depth + 1, userCallback, (error, data, depth) ->
-                  if error
-                    descend(trace, error, null, depth + 1, userCallback, callback)
-                  else
-                    object[keys[index]] = data
-                    next(object, keys, index + 1, depth + 1)
-        next(object, keys, 0, depth + 1)
+      else if not object.__ascending
+        console.log "HERE"
+        if Array.isArray(object)
+          next = (object, index, depth) ->
+            trace "arrayNext", depth, object is null, index, userCallback is callback
+            if index is object.length
+              descend(trace, null, object, depth + 1, userCallback, callback)
+            else
+              loadObject trace, object[index], depth + 1, userCallback, (error, data, depth) ->
+                if error
+                  descend(trace, error, null, depth + 1, userCallback, callback)
+                else
+                  loadObject trace, data, depth + 1, userCallback, (error, data, depth) ->
+                    if error
+                      descend(trace, error, null, depth + 1, userCallback, callback)
+                    else
+                      object[index] = data
+                      next(object, index + 1, depth + 1)
+          next(object, 0, depth + 1)
+        else
+          keys = Object.keys(object)
+          next = (object, keys, index, depth) ->
+            trace "objectNext", depth, object is null, keys[index], userCallback is callback
+            if index is keys.length
+              descend(trace, null, object, depth + 1, userCallback, callback)
+            else
+              loadObject trace, object[keys[index]], depth + 1, userCallback, (error, data, depth) ->
+                if error
+                  descend(trace, error, null, depth + 1, userCallback, callback)
+                else
+                  loadObject trace, data, depth + 1, userCallback, (error, data, depth) ->
+                    if error
+                      descend(trace, error, null, depth + 1, userCallback, callback)
+                    else
+                      object[keys[index]] = data
+                      next(object, keys, index + 1, depth + 1)
+          next(object, keys, 0, depth + 1)
     when "function"
       object (error, data) ->
         trace "CALLBACK", depth, error, data is null
