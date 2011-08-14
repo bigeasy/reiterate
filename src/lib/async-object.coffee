@@ -1,7 +1,5 @@
 descend = (trace, error, object, depth, userCallback, callback) ->
   trace "descend", depth, error, object is null, userCallback is callback
-  if isNaN(depth)
-    process.exit 1
   if userCallback is callback
     callback(error, object)
   else if depth > 1024
