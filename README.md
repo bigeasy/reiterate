@@ -1,10 +1,10 @@
-# Async Object
+# Reitrate
 
 Evented construction of JSON objects.
 
 ## Synopsis
 
-Async Object creates a JSON object tree asynchronously, interpreting functions
+**Reiterate** creates a JSON object tree asynchronously, interpreting functions
 in the object heirarchy as data methods that accept a callback.
 
 You can use functions to define the functions that populate the structure.
@@ -13,18 +13,18 @@ The data functions can inject more data functions into the heirarchy, so that
 the children can be created based on their parents.
 
 ```javascript
-var loadObject = require("async-object").loadObject,
-    datastore = require("acme-datastore").datastore;
+var loadObject = require('reiterate').loadObject,
+    datastore = require('acme-datastore').datastore;
 
 function getArticleByPerson(personId) {
   function (callback) {
-    datastore.select("articles", "personId", personId, callback);
+    datastore.select('articles', 'personId', personId, callback);
   }
 }
 
 function getPerson (id) {
   function (callback) {
-    datastore.select("people", id, function (error, people) {
+    datastore.select('people', id, function (error, people) {
       if (error) {
         callback(error);
       }  else {
@@ -40,7 +40,7 @@ var data = { person: getPeople(1) };
 loadObject(data, function (error, data) {
   for (var i = 0; i < data.person.articles.length; i++) {
     article = data.person.articles[i];
-    process.stdout.write(article.title + " by " + person.name + "\n");
+    process.stdout.write(article.title + ' by ' + person.name + '\n');
   }
 });
 ```
@@ -55,7 +55,7 @@ pseudo-JOIN, to create a psuedo-JOIN across database engines
 The `reiterate` module exports the `loadObject` method.
 
 ```javascript
-var loadObject = require("async-object").loadObject;
+var loadObject = require('async-object').loadObject;
 ```
 
 ### `loadObject(object, callback)`
