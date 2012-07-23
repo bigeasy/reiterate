@@ -1,5 +1,5 @@
-{   "name":             "async-object"
-,   "version":          "0.0.5"
+{   "name":             "reiterate"
+,   "version":          "0.0.0"
 ,   "author":           "Alan Gutierrez"
 ,   "main":             "./lib/async-object"
 }

@@ -49,7 +49,9 @@ loadObject(data, function (error, data) {
 For those of you using a NoSQL database, this is an easy way to get a
 pseudo-JOIN, to create a psuedo-JOIN across database engines
 
-@ async-object
+## API
+
+`**async-object**`
 
 The `async-object` module exports the `loadObject` method.
 
@@ -57,7 +59,7 @@ The `async-object` module exports the `loadObject` method.
 var loadObject = require("async-object").loadObject;
 ```
 
-~ loadObject(object, callback)
+`**loadObject(object, callback)**`
 
   ~ object - The object to populate.
   ~ callback - The callback to invoke when the object has been loaded, or when
