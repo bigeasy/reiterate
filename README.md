@@ -59,7 +59,7 @@ The `async-object` module exports the `loadObject` method.
 var loadObject = require("async-object").loadObject;
 ```
 
-`**loadObject(object, callback)**`
+### `loadObject(object, callback)`
 
   ~ object - The object to populate.
   ~ callback - The callback to invoke when the object has been loaded, or when
