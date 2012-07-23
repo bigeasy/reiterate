@@ -51,7 +51,7 @@ pseudo-JOIN, to create a psuedo-JOIN across database engines
 
 ## API
 
-`**async-object**`
+**`async-object`**
 
 The `async-object` module exports the `loadObject` method.
 
