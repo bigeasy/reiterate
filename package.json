@@ -7,14 +7,12 @@
     { "type": "MIT"
     , "url": "http://github.com/bigeasy/stencil/raw/master/LICENSE"
     }]
+, "homepage": "https://github.com/bigeasy/reiterate"
 , "repository":
   { "type": "git"
   , "url": "http://github.com/bigeasy/stencil.git"
   }
 , "scripts" : { "test": "proof platform win32 && proof t/*/*.t || t/test" }
-, "devDependencies":
-  { "proof": "0.0.14"
-  , "uglify-js": "~1.3"
-  }
+, "devDependencies": { "proof": "0.0.15" , "uglify-js": "~1.3" }
 , "dependencies": { }
 }
