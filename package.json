@@ -1,7 +1,7 @@
 {   "name":             "reiterate"
 ,   "description":      "Construct JSON object trees recursively, asynchronously to join data from multiple data sources."
 ,   "version":          "0.0.0"
-,   "author":           "Alan Gutierrez"
+,   "author":           "Alan Gutierrez <alan@prettyrobots.com>"
 ,   "keywords":         [ "json", "async", "asynchronous", "query", "database" ]
 ,   "licenses": [
     { "type": "MIT"
