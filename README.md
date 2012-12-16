@@ -87,3 +87,14 @@ those data functions will be be expanded before they are assigned to the tree.
 
 You can also pass a function as the `object` argument so that the expanded data
 callback result is given to the user callback.
+
+## Change Log
+
+Changes for each release.
+
+### Version 0.0.0
+
+Released: Mon Jul 23 02:29:04 UTC 2012
+
+ * Build on Travis CI. #4. 
+ * Rename to `reiterate`. #2.
