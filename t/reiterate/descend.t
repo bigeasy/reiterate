@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-require('proof')(1, function (async, deepEqual) {
+require('proof')(1, function (step, deepEqual) {
 
   function generator (number) {
     return function (callback) { callback(null, number * 2) }
@@ -8,7 +8,7 @@ require('proof')(1, function (async, deepEqual) {
 
   var loadObject = require('../..').loadObject;
 
-  loadObject({ a: generator(1) }, async());
+  loadObject({ a: generator(1) }, step());
 
 }, function (object, deepEqual) {
 
