@@ -1,4 +1,4 @@
-# Reitrate
+# Reitrate [![Build Status](https://travis-ci.org/bigeasy/reiterate.png?branch=master)](https://travis-ci.org/bigeasy/reiterate)
 
 Evented construction of JSON objects.
 
