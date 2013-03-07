@@ -3,9 +3,11 @@ function descend (trace, error, object, depth, userCallback, callback) {
   if (userCallback === callback) {
     return callback(error, object);
   } else if (depth > 1024) {
-    return process.nextTick(function() {
-      return descend(trace, error, object, 0, userCallback, callback);
-    });
+    if ((typeof process == "object") && process.nextTick) {
+      process.nextTick(function() { descend(trace, error, object, 0, userCallback, callback); });
+    } else {
+      setTimeout(function() { descend(trace, error, object, 0, userCallback, callback); }, 1);
+    }
   } else {
     return callback(error, object, depth);
   }
