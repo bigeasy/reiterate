@@ -6,9 +6,9 @@ require('proof')(1, function (step, deepEqual) {
     return function (callback) { callback(null, number * 2) }
   }
 
-  var loadObject = require('../..').loadObject;
+  var reiterate = require('../..');
 
-  loadObject({ a: generator(1) }, step());
+  reiterate({ a: generator(1) }, step());
 
 }, function (object, deepEqual) {
 

@@ -81,6 +81,6 @@ function loadObject (trace, object, depth, userCallback, callback) {
 
 function noop () {}
 
-module.exports.loadObject = function(object, callback, trace) {
+module.exports = function(object, callback, trace) {
   return loadObject(trace || noop, object, 0, callback, callback);
 }
