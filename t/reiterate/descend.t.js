@@ -1,17 +1,20 @@
 #!/usr/bin/env node
 
 require('proof')(1, function (step, deepEqual) {
-
+  
   function generator (number) {
     return function (callback) { callback(null, number * 2) }
   }
 
-  var reiterate = require('../..');
+  step(function () {
 
-  reiterate({ a: generator(1) }, step());
+    var reiterate = require('../..');
 
-}, function (object, deepEqual) {
+    reiterate({ a: generator(1) }, step());
 
-  deepEqual(object, { a: 2 }, 'callback called');
+  }, function (object) {
 
+    deepEqual(object, { a: 2 }, 'callback called');
+
+  });
 });
