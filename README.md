@@ -92,9 +92,19 @@ callback result is given to the user callback.
 
 Changes for each release.
 
+### Version 0.0.1
+
+Sun Apr  7 01:48:22 UTC 2013
+
+ * Add RequireJS AMD cladding. #3.
+ * Export only `reiterate` function at top level. #5.
+ * Add `.js` suffix to test file names. #8.
+ * Added Travis CI chicklet to `README.md`. #10.
+ * Remove `.npmignore`. #9.
+
 ### Version 0.0.0
 
-Released: Mon Jul 23 02:29:04 UTC 2012
+Mon Jul 23 02:29:04 UTC 2012
 
  * Build on Travis CI. #4. 
  * Rename to `reiterate`. #2.
