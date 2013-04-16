@@ -1,4 +1,4 @@
-# Reitrate [![Build Status](https://travis-ci.org/bigeasy/reiterate.png?branch=master)](https://travis-ci.org/bigeasy/reiterate)
+# Reitrate [![Build Status](https://travis-ci.org/bigeasy/reiterate.png?branch=master)](https://travis-ci.org/bigeasy/reiterate) [![Coverage Status](https://coveralls.io/repos/bigeasy/reiterate/badge.png?branch=master)](https://coveralls.io/r/bigeasy/reiterate) [![NPM version](https://badge.fury.io/js/reiterate.png)](http://badge.fury.io/js/reiterate)
 
 Evented construction of JSON objects.
 
