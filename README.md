@@ -36,7 +36,7 @@ function getPerson (id) {
   }
 }
 
-var data = { person: getPeople(1) };
+var data = { person: getPerson(1) };
 loadObject(data, function (error, data) {
   for (var i = 0; i < data.person.articles.length; i++) {
     article = data.person.articles[i];
