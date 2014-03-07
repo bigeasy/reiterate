@@ -13,6 +13,6 @@
   , "url": "http://github.com/bigeasy/reiterate.git"
   }
 , "scripts" : { "test": "proof platform win32 && proof test t/*/*.t.js || t/test" }
-, "devDependencies": { "proof": "0.0.41" , "uglify-js": "~1.3" }
+, "devDependencies": { "proof": "0.0.44" , "uglify-js": "~1.3" }
 , "dependencies": { }
 }
