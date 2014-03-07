@@ -1,18 +1,35 @@
-{   "name":             "reiterate"
-,   "description":      "Construct JSON object trees recursively, asynchronously to join data from multiple data sources."
-,   "version":          "0.0.0"
-,   "author":           "Alan Gutierrez <alan@prettyrobots.com>"
-,   "keywords":         [ "json", "async", "asynchronous", "query", "database" ]
-,   "licenses": [
-    { "type": "MIT"
-    , "url": "http://github.com/bigeasy/reiterate/raw/master/LICENSE"
-    }]
-, "homepage": "https://github.com/bigeasy/reiterate"
-, "repository":
-  { "type": "git"
-  , "url": "http://github.com/bigeasy/reiterate.git"
-  }
-, "scripts" : { "test": "proof platform win32 && proof test t/*/*.t.js || t/test" }
-, "devDependencies": { "proof": "0.0.44" , "uglify-js": "~1.3" }
-, "dependencies": { }
+{
+    "name":             "reiterate",
+    "description":
+
+    "Construct JSON object trees recursively, asynchronously to join data from multiple data sources.",
+    "version":          "0.0.0",
+    "author":           "Alan Gutierrez <alan@prettyrobots.com>",
+    "keywords":
+    [
+                            "json", "async", "asynchronous", "query", "database"
+    ],
+    "licenses":
+    [{
+                            "type": "MIT",
+                            "url": "http://github.com/bigeasy/reiterate/raw/master/LICENSE"
+    }],
+    "homepage":         "https://github.com/bigeasy/reiterate",
+    "repository":
+    {
+                            "type": "git",
+                            "url": "http://github.com/bigeasy/reiterate.git"
+    },
+    "scripts":
+    {
+                            "test": "proof platform win32 && proof test t/*/*.t.js || t/test"
+    },
+    "devDependencies":
+    {
+                            "proof": "0.0.44",
+                            "uglify-js": "~1.3"
+    },
+    "dependencies":
+    {
+    }
 }
